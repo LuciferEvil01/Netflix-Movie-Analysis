@@ -277,27 +277,92 @@ En este análisis, se realizó un test de Kolmogorov-Smirnov para evaluar si la 
 
 % --- Sección 4: Formulación de Hipótesis ---
 \section{Formulación de Hipótesis}
-\subsection{Hipótesis Nula y Alternativa}
+
+\subsection{ Duración en películas}
+ Objetivo: Comprobar si al menos el 70\% de las películas tienen una duración mayor a 80 minutos.
+
 \begin{itemize}
-    \item Hipótesis nula H0 y alternativa H1.
-    \item Justificación de las hipótesis basada en el EDA y PCA.
+	\item Hipótesis nula : La proporción es menor o igual a 0.70 .
+	\item Hipótesis alternativa:La proporción es mayor a 0.70.
 \end{itemize}
 
-\subsection{Pruebas Estadísticas Seleccionadas}
-Descripción de las pruebas a utilizar (t-test, ANOVA, chi-cuadrado, etc.) y su relevancia.
+Dado que la media muestral de las peliculas es mayor a 80 minutos , es lógico pensar que gran parte de las peliculas de Netlfix tienen una duración superior a 80 minutos.
+\newline
+\newline
+Luego de realizada la prueba de hipotesis(ver en el archivo Hipotesis.ipynb) se rechaza la hipotesis nula, por lo que podemos asegurar en un 95\%  que más del 70\% de las películas de Netflix tienen una duración superior a 80 minutos.
+
+
+\subsection{Rating en películas y series}
+\begin{itemize}
+	\item Hipótesis nula :  El rating más común en el contenido  de EE.UU. no es TV-MA.
+	\item Hipótesis alternativa: El rating más común de EE.UU. es TV-MA.
+\end{itemize}
+En el análisis exploratorio de datos se pudo observar que en la muestra  la categoría mas común tanto en peliculas como en series es TV-MA.Siendo Estados Unidos es el pais con mayor contenido en peliculas y series,se desea comprobar si el rating mas comun en su contenido es TV-MA.
+\newline
+\newline
+Luego de realizada la prueba de hipotesis(ver en el archivo Hipotesis.ipynb) se rechaza la hipotesis nula, por lo que podemos asegurar en un 95\%  que  el rating mas comun en EEUU es TV-MA
+
+
+\subsection{Prueba de los castings en EEUU e India}
+Si observamos los gráficos , notamos que los actores mas comunes de las películas son de nacionalidad India, aún cuando el pais con mas peliculas es Estados Unidos (seguido de India).Esto sugiere diferencias en las industrias cinematográficas de ambos países, posiblemente en términos de diversidad y frecuencia de aparición de los actores en las producciones.
+
+\begin{itemize}
+	\item Hipótesis nula : No hay diferencia significativa en la frecuencia promedio de aparición de actores entre las películas de India y las de Estados Unidos.
+	\item Hipótesis alternativa:Los actores en las películas de India tienen una frecuencia promedio de aparición mayor que los actores en las películas de Estados Unidos.
+\end{itemize}
+Luego de realizada la prueba de hipotesis(ver en el archivo Hipotesis.ipynb) se rechaza la hipotesis nula, por lo que podemos asegurar en un 95\%  que los actores en películas de India aparecen en más películas en promedio que los actores en películas de EE.UU.
+\newline
+\newline
+nota: Algo similar sucede con las series ,aun cuando Estados Unidos es el pais con mas series, los actores mas comunes son de nacionalidad  japonesa.
+
+
+
+
+
+\subsection{ Categorias Más Común en Películas}
+Queremos determinar si "International Movies" es la categoría más frecuente en las películas del catálogo de Netflix, y si su frecuencia es significativamente mayor que la esperada si todas las categorías fueran igualmente comunes.
+\begin{itemize}
+	
+	\item Hipótesis nula : La categoría "International Movies" no es la categoría más común entre las películas; su frecuencia no difiere significativamente de las demás categorías.
+	\item Hipótesis alternativa:La categoría "International Movies" es la categoría más común entre las películas; su frecuencia es significativamente mayor que la de otras categorías.
+\end{itemize}
+Luego de realizada la prueba de hipotesis(ver en el archivo Hipotesis.ipynb) se rechaza la hipotesis nula, por lo que podemos asegurar en un 95\%  que  La categoría "International Movies" es la categoría más común entre las películas.
+
 
 % --- Sección 5: Análisis de Correlación ---
 \section{Análisis de Correlación}
 \subsection{Matriz de Correlación}
+Para la matriz de correlación , se utilizaron las siguientes variables (luego de las transformaciones necesarias):
 \begin{itemize}
-    \item Cálculo de la matriz de correlación.
-    \item Visualización con heatmap.
+	\item duration :Convertiremos la columna duration a variables numéricas separadas para películas y series.
+	\item date\_added :Convertiremos las fechas a un formato numérico (días desde una fecha de referencia).
+	\item rating: Asignaremos valores numéricos a las clasificaciones por edad.
+	\item is\_movie: Indicador binario (1 si es película, 0 si es serie).
 \end{itemize}
+
+\subsubsection{Películas}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{Graphs/matriz_correlacion_peliculas.png}
+	\caption{Tiempo promedio anual en añadir el contenido a la plataforma desde su estreno }
+	\label{fig:matriz_correlacion_peliculas}
+\end{figure}
+
+\subsubsection{Series}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{Graphs/matriz_correlacion_series.png}
+	\caption{Tiempo promedio anual en añadir el contenido a la plataforma desde su estreno }
+	\label{fig:matriz_correlacion_series}
+\end{figure}
+
+
 
 \subsection{Interpretación de Correlaciones}
 \begin{itemize}
-    \item Identificación de correlaciones fuertes.
-    \item Discusión sobre multicolinealidad y su impacto en el análisis.
+    \item Valores cercanos a 1: Fuerte correlación positiva. Cuando una variable aumenta, la otra también tiende a aumentar.
+    \item Valores cercanos a -1: Fuerte correlación negativa. Cuando una variable aumenta, la otra tiende a disminuir.
+    \item Valores cercanos a 0: No hay correlación lineal. Las variables no tienen una relación lineal clara.
 \end{itemize}
 
 % --- Sección 6: Regresión Lineal ---

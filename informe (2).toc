@@ -1,0 +1,36 @@
+\contentsline {section}{\numberline {1}Introducción}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Contexto del Problema}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Descripción del Dataset}{3}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Análisis Exploratorio de Datos (EDA)}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Limpieza de Datos}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Análisis Descriptivo}{3}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Estadísticas descriptivas (media, mediana, desviación estándar, etc.).}{3}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Visualizaciones}{5}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Análisis de variables categóricas (tablas de frecuencia, gráficos de barras).}{12}{subsubsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.3}Relaciones Iniciales}{12}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Análisis de Componentes Principales (PCA)}{12}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Proceso}{12}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Gráficos}{12}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Test de Normalidad}{14}{section.4}%
+\contentsline {section}{\numberline {5}Formulación de Hipótesis}{15}{section.5}%
+\contentsline {subsection}{\numberline {5.1} Duración en películas}{15}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Rating en películas y series}{15}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Prueba de los castings en EEUU e India}{16}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4} Categorias Más Común en Películas}{16}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Análisis de Correlación}{17}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Matriz de Correlación}{17}{subsection.6.1}%
+\contentsline {subsubsection}{\numberline {6.1.1}Películas}{17}{subsubsection.6.1.1}%
+\contentsline {subsubsection}{\numberline {6.1.2}Series}{18}{subsubsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.2}Interpretación de Correlaciones}{18}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Regresión Lineal}{18}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Selección de Variables}{18}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}División del Dataset}{19}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Ajuste del Modelo}{19}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Evaluación del Modelo}{19}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Interpretación de Resultados}{19}{subsection.7.5}%
+\contentsline {section}{\numberline {8}Validación y Conclusiones}{19}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Validación Cruzada}{19}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Conclusiones}{19}{subsection.8.2}%
+\contentsline {section}{\numberline {9}Apéndices}{19}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Código Utilizado}{19}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Tablas y Figuras Adicionales}{19}{subsection.9.2}%
