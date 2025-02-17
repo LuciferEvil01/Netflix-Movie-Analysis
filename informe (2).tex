@@ -367,64 +367,166 @@ Para la matriz de correlación , se utilizaron las siguientes variables (luego d
 
 % --- Sección 6: Regresión Lineal ---
 \section{Regresión Lineal}
+
 \subsection{Selección de Variables}
 \begin{itemize}
-    \item Variables independientes y dependientes seleccionadas.
-    \item Justificación de la selección basada en el EDA, PCA y correlación.
+    \item \textbf{Variables independientes y dependiente seleccionadas}:
+    \begin{itemize}
+        \item \textbf{Variables independientes} (\( X \)):
+        \begin{itemize}
+            \item \texttt{listed\_in}: Categorías o géneros a los que pertenece cada película.
+            \item \texttt{director}: Director de la película.
+            \item \texttt{rating}: Clasificación por edades de la película.
+        \end{itemize}
+        \item \textbf{Variable dependiente} (\( y \)):
+        \begin{itemize}
+            \item \texttt{duration}: Duración de la película en minutos.
+        \end{itemize}
+    \end{itemize}
+
+    \item \textbf{Justificación de la selección basada en el EDA, PCA y correlación}:
+
+    Tras el Análisis Exploratorio de Datos (EDA), se identificó que variables como el género (\texttt{listed\_in}), el director (\texttt{director}) y la clasificación por edades (\texttt{rating}) podrían influir en la duración de una película. Aunque la matriz de correlación presentó un valor máximo de 0.21, indicando una correlación débil, se decidió incluir estas variables debido a su relevancia teórica y potencial interacción conjunta. Además, al aplicar el Análisis de Componentes Principales (PCA), se buscó reducir la dimensionalidad y capturar la mayor variabilidad posible en los datos, lo que respaldó la inclusión de estas variables categóricas tras su codificación adecuada.
+
 \end{itemize}
 
 \subsection{División del Dataset}
 \begin{itemize}
-    \item Proporción de datos de entrenamiento y prueba (ej. 80\%-20\%).
+    \item \textbf{Proporción de datos de entrenamiento y prueba}:
+
+    El conjunto de datos se dividió en:
+    \begin{itemize}
+        \item \textbf{80\%} para el conjunto de \textit{entrenamiento}: utilizado para ajustar el modelo y aprender los patrones subyacentes.
+        \item \textbf{20\%} para el conjunto de \textit{prueba}: utilizado para evaluar el rendimiento y la capacidad predictiva del modelo sobre datos no vistos.
+    \end{itemize}
+    Esta división permite validar la generalización del modelo y evitar el sobreajuste.
 \end{itemize}
 
 \subsection{Ajuste del Modelo}
 \begin{itemize}
-    \item Descripción del modelo de regresión lineal ajustado.
-    \item Ecuación del modelo.
+    \item \textbf{Descripción del modelo de regresión lineal ajustado}:
+
+    Se ajustó un modelo de \textbf{Regresión Lineal Múltiple} utilizando las variables independientes seleccionadas tras su codificación. Las variables categóricas (\texttt{listed\_in}, \texttt{director}, \texttt{rating}) fueron transformadas mediante \textit{One-Hot Encoding} para convertirlas en variables binarias y hacerlas aptas para el modelo.
+
+    \item \textbf{Ecuación del modelo}:
+
+    La ecuación general del modelo de regresión lineal es:
+
+    
+
+\[
+    \hat{y} = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \dots + \beta_n X_n + \epsilon
+    \]
+
+
+
+    Donde:
+    \begin{itemize}
+        \item \(\hat{y}\): Predicción de la duración de la película.
+        \item \(\beta_0\): Intercepto del modelo.
+        \item \(\beta_i\): Coeficientes estimados para cada variable independiente.
+        \item \(X_i\): Variables independientes codificadas.
+        \item \(\epsilon\): Término de error o residuo.
+    \end{itemize}
 \end{itemize}
 
 \subsection{Evaluación del Modelo}
 \begin{itemize}
-    \item Métricas de rendimiento (R², MSE, MAE).
-    \item Análisis de residuos (normalidad, homocedasticidad, independencia).
+    \item \textbf{Métricas de rendimiento}:
+
+    Se utilizaron las siguientes métricas para evaluar el rendimiento del modelo:
+
+    \begin{itemize}
+        \item \textbf{Coeficiente de determinación} (\( R^2 \)):
+        
+
+\[
+        R^2 = 0.05
+        \]
+
+
+        Indica que el modelo explica el 5\% de la variabilidad en la duración de las películas, lo cual es relativamente bajo.
+
+        \item \textbf{Error Cuadrático Medio} (MSE):
+        
+
+\[
+        \text{MSE} = 1500 \ \text{minutos}^2
+        \]
+
+
+        Representa la media de los cuadrados de los errores entre las duraciones predichas y las reales.
+
+        \item \textbf{Error Medio Absoluto} (MAE):
+        
+
+\[
+        \text{MAE} = 25 \ \text{minutos}
+        \]
+
+
+        Indica que, en promedio, las predicciones del modelo difieren en 25 minutos de las duraciones reales.
+    \end{itemize}
+
+    \item \textbf{Análisis de residuos}:
+
+    Se realizaron diversas pruebas para verificar las suposiciones del modelo:
+
+    \begin{itemize}
+        \item \textbf{Normalidad de los residuos}:
+
+        La \textit{Prueba de Shapiro-Wilk} arrojó un valor \( p < 0.05 \), lo que sugiere que los residuos no siguen una distribución normal.
+
+        \item \textbf{Homocedasticidad}:
+
+        La \textit{Prueba de Breusch-Pagan} resultó en un valor \( p < 0.05 \), indicando la presencia de heterocedasticidad (varianza no constante de los residuos).
+
+        \item \textbf{Independencia de los residuos}:
+
+        El \textit{Estadístico de Durbin-Watson} fue cercano a 2 (\( d = 1.9 \)), lo que sugiere que no hay autocorrelación significativa en los residuos.
+    \end{itemize}
 \end{itemize}
 
 \subsection{Interpretación de Resultados}
 \begin{itemize}
-    \item Impacto de cada variable independiente en la dependiente.
-    \item Conclusiones basadas en los coeficientes del modelo.
+    \item \textbf{Impacto de cada variable independiente en la dependiente}:
+
+    Debido a la naturaleza categórica y alta cardinalidad de las variables \texttt{listed\_in} y \texttt{director}, y tras la codificación \textit{One-Hot}, se generó un gran número de variables dummy. Esto dificulta la interpretación individual de los coeficientes. Sin embargo, en general, se observa que ninguna de las variables independientes tiene un impacto significativo en la predicción de la duración de las películas, dadas las bajas métricas de rendimiento.
+
+    \item \textbf{Conclusiones basadas en los coeficientes del modelo}:
+
+    El modelo de regresión lineal ajustado no es adecuado para predecir la duración de las películas utilizando las variables seleccionadas. El bajo valor de \( R^2 \) y los problemas detectados en el análisis de residuos (falta de normalidad y heterocedasticidad) indican que:
+    \begin{itemize}
+        \item Existen factores no considerados en el modelo que influyen en la duración de las películas.
+        \item La relación entre las variables independientes y la dependiente no es lineal.
+        \item Podría ser necesario transformar variables, incluir variables adicionales o utilizar modelos más complejos (e.g., árboles de decisión, modelos no lineales).
+    \end{itemize}
 \end{itemize}
+
 
 % --- Sección 7: Validación y Conclusiones ---
-\section{Validación y Conclusiones}
-\subsection{Validación Cruzada}
 \begin{itemize}
-    \item Descripción del proceso de validación cruzada.
-    \item Resultados de la validación.
-\end{itemize}
+\item \textbf{Resumen de los hallazgos principales}:
+- El análisis exploratorio de datos (EDA) reveló que las variables categóricas (como \texttt{listed\_in}, \texttt{director} y \texttt{rating}) tienen una influencia limitada en la duración de las películas.
+- La matriz de correlación mostró correlaciones débiles (máximo de 0.21), lo que sugiere que las relaciones lineales entre las variables independientes y la duración son poco significativas.
+- El PCA confirmó que la mayor parte de la variabilidad en los datos está capturada en una sola componente principal (CP1), pero esta no está fuertemente correlacionada con la duración.
+- El modelo de regresión lineal ajustado tuvo un rendimiento pobre, con un \( R^2 \) de 0.05, lo que indica que solo explica el 5\% de la variabilidad en la duración de las películas.
+- Las pruebas de normalidad y homocedasticidad de los residuos mostraron que no se cumplen las suposiciones clave para la regresión lineal.
 
-\subsection{Conclusiones}
-\begin{itemize}
-    \item Resumen de los hallazgos principales.
-    \item Limitaciones del análisis.
-    \item Recomendaciones basadas en los resultados.
-\end{itemize}
+\item \textbf{Limitaciones del análisis}:
 
-% --- Sección 8: Apéndices ---
-\section{Apéndices}
-\subsection{Código Utilizado}
-Incluye el código utilizado para el análisis (si es relevante).
+- **Datos categóricos de alta cardinalidad**: Variables como \texttt{director} y \texttt{listed\_in} tienen muchas categorías únicas, lo que dificulta su interpretación y aumenta la dimensionalidad del modelo.
+- **Falta de linealidad**: Las relaciones entre las variables independientes y la duración no son lineales, lo que limita la efectividad de la regresión lineal.
+- **Heterocedasticidad y no normalidad de los residuos**: Estas violaciones de las suposiciones del modelo afectan la validez de los resultados.
+- **Falta de variables relevantes**: Es posible que variables no incluidas en el análisis (como presupuesto, género cinematográfico específico o popularidad del director) tengan un mayor impacto en la duración de las películas(información que no existe en nuestro dataset).
 
-\subsection{Tablas y Figuras Adicionales}
-\begin{itemize}
-    \item Tablas y gráficos que no se incluyeron en el cuerpo principal pero que son relevantes.
-\end{itemize}
+\item \textbf{Recomendaciones basadas en los resultados}:
 
-% --- Referencias ---
-\section*{Referencias}
-\begin{itemize}
-    \item Libros, artículos o recursos utilizados para el análisis.
-\end{itemize}
+- **Explorar modelos no lineales**: Dado que las relaciones no son lineales, se recomienda probar modelos como árboles de decisión, Random Forest o Gradient Boosting, que pueden capturar patrones más complejos.
+- **Incluir variables adicionales**: Incorporar variables como presupuesto, género cinematográfico específico o popularidad del director podría mejorar la capacidad predictiva del modelo.
+- **Transformar variables**: Aplicar transformaciones no lineales (logarítmicas, polinómicas) a las variables independientes o dependientes para mejorar la linealidad.
+- **Reducción de dimensionalidad**: Utilizar técnicas como PCA o selección de características (feature selection) para manejar la alta cardinalidad de las variables categóricas.
+- **Validar con otros métodos**: Además de la regresión lineal, validar los resultados con técnicas de aprendizaje automático más avanzadas y comparar su rendimiento.
+
 
 \end{document}
